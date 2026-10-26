@@ -1,0 +1,155 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --fondo: #f5f6f8;
+  --tarjeta: #ffffff;
+  --texto: #1f2430;
+  --texto-suave: #5b6272;
+  --borde: #e1e4ea;
+  --acento: #3b5bdb;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.intro {
+  margin: 0 0 1.5rem;
+  color: var(--texto-suave);
+}
+
+.buscador {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 420px;
+  margin-bottom: 1.5rem;
+}
+
+.buscador label {
+  font-weight: 600;
+}
+
+.buscador input {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.buscador input:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.producto:hover {
+  box-shadow: 0 6px 18px rgba(31, 36, 48, 0.1);
+  transform: translateY(-2px);
+}
+
+.producto[hidden] {
+  display: none;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #eef0f4;
+}
+
+.producto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.producto h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.categoria {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  color: var(--texto-suave);
+}
+
+.precio {
+  margin: 0.25rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+.valoracion {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.mensaje {
+  padding: 0.8rem 1rem;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+.mensaje[hidden] {
+  display: none;
+}
+
+.mensaje.error {
+  border-color: #e03131;
+  color: #b02525;
+  background: #fff5f5;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 1.25rem;
+  }
+
+  .buscador {
+    max-width: none;
+  }
+}

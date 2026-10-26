@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  price: number;
+  category: string;
+  rating: number;
+  thumbnail: string;
+}
+
+const { title, price, category, rating, thumbnail } = Astro.props;
+
+const precio = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+}).format(price);
+---
+
+<article class="producto" data-title={title.toLowerCase()}>
+  <img src={thumbnail} alt={`Imagen de ${title}`} loading="lazy" width="300" height="300" />
+  <div class="producto-info">
+    <p class="categoria">{category}</p>
+    <h2>{title}</h2>
+    <p class="precio">{precio}</p>
+    <p class="valoracion" aria-label={`Valoración ${rating.toFixed(1)} de 5`}>
+      ★ {rating.toFixed(1)}
+    </p>
+  </div>
+</article>
